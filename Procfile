@@ -1,1 +1,1 @@
-web: gunicorn itsallinthedough.wsgi
+web: gunicorn its-all-in-the-dough.wsgi
