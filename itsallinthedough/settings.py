@@ -13,8 +13,8 @@ import sys
 import os
 from pathlib import Path
 import dj_database_url
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 if os.path.exists('env.py'):
     import env 
@@ -43,9 +43,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY',' ')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['https://itsallinthedough-715c6b7f0f5c.herokuapp.com/',
-                 'localhost', '127.0.0.1']
+DEBUG = True
+ALLOWED_HOSTS = ['https://itsallinthedough-715c6b7f0f5c.herokuapp.com/', 'localhost', '8000-stefka92-itsallinthedou-1q2zo8ev8jz.ws-eu101.gitpod.io']
+
 
 
 # Application definition
@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'restaurantbookingsystem',
-    ''
 ]
 
 
@@ -79,7 +78,7 @@ ROOT_URLCONF = 'itsallinthedough.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,27 +93,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'itsallinthedough.wsgi.application'
 
+import os
+import dj_database_url
 
-# Database
+# ...
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT'),
-#     }
-# }
-
-
-
-database_url = os.environ.get("DATABASE_URL")
-if database_url is not None:
-    parsed_db_url = dj_database_url.parse(database_url)
-    parsed_db_url['OPTIONS'] = {'sslmode': 'require'}
-    DATABASES['default'] = parsed_db_url
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600),
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # ...
 
@@ -136,6 +130,20 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# settings.py
+
+# Other settings...
+
+# Cloudinary configuration for storage
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dkagwdhi4',
+    'API_SECRET': 'luL1QnYDbr3OM0_iaJSGmK9uilk',
+    'API_KEY': '961491797273152',
+}
+
+# Other settings...
+
 
 
 # Internationalization
