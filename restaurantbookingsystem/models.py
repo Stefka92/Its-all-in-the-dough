@@ -1,33 +1,39 @@
 from django.db import models
-from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.conf import settings
 
-# Create your models here.
-
-from django.db import models
-
-class Restaurant(models.Model):
-    name = models.CharField(max_length=100)
-    address = models.CharField(max_length=200)
-    phone_number = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.name
 
 class Table(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    table_number = models.IntegerField()
-    capacity = models.IntegerField()
+    code = models.CharField(max_length=10, unique=True)
+    capacity = models.PositiveIntegerField()
+    is_available = models.BooleanField(default=True)
+    image = CloudinaryField('table_image')
 
     def __str__(self):
-        return f"Table {self.table_number} - {self.restaurant.name}"
+        return self.code
 
-class Reservation(models.Model):
+
+class Booking(models.Model):
+    date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
-    guest_name = models.CharField(max_length=100)
-    guest_email = models.EmailField()
-    reservation_date = models.DateField()
-    reservation_time = models.TimeField()
+    customer_name = models.CharField(max_length=200)
+    customer_email = models.EmailField(max_length=200)
+    created_on = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        blank=True, null=True
+    )
+
+    class Meta:
+        ordering = ['date', 'start_time']
+
+
+class BookingQuery(models.Model):
+    date = models.DateField()
 
     def __str__(self):
-        return f"Reservation for {self.guest_name} at {self.table} on {self.reservation_date}"
+        return str(self.date)
+
+    # Add other fields specific to the Customer model

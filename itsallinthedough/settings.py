@@ -9,33 +9,43 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import sys
 import os
 from pathlib import Path
-
-import os
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
 
-if os.path.isfile("env.py"):
-   import env
+if os.path.exists('env.py'):
+    import env 
 
+
+if os.environ.get('DEVELOPMENT'):
+    DEVELOPMENT = True
+else:
+    DEVELOPMENT = False
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+PROJECT_DIR = Path(__file__).resolve().parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+
+SECRET_KEY = os.environ.get('SECRET_KEY',' ')
+
+# ...
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['itsallinthedough-715c6b7f0f5c.herokuapp.com', 'local host']
-
+DEBUG = False
+ALLOWED_HOSTS = ['https://itsallinthedough-715c6b7f0f5c.herokuapp.com/',
+                 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -50,7 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'restaurantbookingsystem',
+    ''
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,18 +97,26 @@ WSGI_APPLICATION = 'itsallinthedough.wsgi.application'
 
 # Database
 
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'),
+#         'PORT': os.environ.get('DB_PORT'),
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
 
+
+database_url = os.environ.get("DATABASE_URL")
+if database_url is not None:
+    parsed_db_url = dj_database_url.parse(database_url)
+    parsed_db_url['OPTIONS'] = {'sslmode': 'require'}
+    DATABASES['default'] = parsed_db_url
+
+# ...
 
 
 # Password validation
