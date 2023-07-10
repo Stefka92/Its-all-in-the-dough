@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>My Restaurant</title>
+      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+      <nav>
+        <ul>
+          <li><a href="{% url 'restaurantbookingsystem:table_list' %}">Tables</a></li>
+          <li><a href="{% url 'restaurantbookingsystem:booking_list' %}">Bookings</a></li>
+          <li><a href="{% url 'restaurantbookingsystem:booking_create' %}">Create Booking</a></li>
+          <li><a href="{% url 'restaurantbookingsystem:booking_query' %}">Booking Query</a></li>
+        </ul>
+      </nav>
+    
+      <main>
+        {% block content %}
+        {% endblock %}
+      </main>
+    </body>
+    </html>
+    
