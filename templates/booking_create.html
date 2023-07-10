@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Booking</h1>
+  <form method="post" action="{% url 'booking_create' %}">
+    {% csrf_token %}
+    <label for="table">Table:</label>
+    <select name="table" id="table">
+      {% for table in tables %}
+        <option value="{{ table.id }}">{{ table.code }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="date">Date:</label>
+    <input type="date" name="date" id="date">
+    <br>
+    <label for="start_time">Start Time:</label>
+    <input type="time" name="start_time" id="start_time">
+    <br>
+    <label for="end_time">End Time:</label>
+    <input type="time" name="end_time" id="end_time">
+    <br>
+    <label for="customer_name">Customer Name:</label>
+    <input type="text" name="customer_name" id="customer_name">
+    <br>
+    <label for="customer_email">Customer Email:</label>
+    <input type="email" name="customer_email" id="customer_email">
+    <br>
+    <input type="submit" value="Create Booking">
+  </form>
+{% endblock %}

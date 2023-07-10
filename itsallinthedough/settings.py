@@ -49,6 +49,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '8000-stefka92-itsallinthedou-gl1zpncwgia.ws-eu101.gitpod.io',
     'https://itsallinthedough-715c6b7f0f5c.herokuapp.com/',
+    '8000-stefka92-itsallinthedou-b9k5er55bgw.ws-eu101.gitpod.io',
 ]
 
 
