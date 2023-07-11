@@ -94,8 +94,11 @@ ________________________________________________________________________________
 
 **Color Scheme**
 
+ I went with green red and cream for the main colours throughout the website.
+ Green to represent the basil in the pizza recipes.
+ Red to represent the tomato sauce in the pizza recipes.
+ Cream to represent the pizza dough.
 
-**Font**
 
 **Libraries**
 
@@ -119,3 +122,45 @@ This restaurant booking system was created using Agile methodology by breaking d
 2.Prioritize User Stories
 3.Sprint Planning
 4.Development and Testing
+
+
+### Deployment
+The project was deployed using Code Institutes mock terminal for Heroku.
+
+I followed the below steps using the Code Institute tutorial:
+
+- Add any external liberies useds to requirements.txt.
+
+- Create a new app in Heroku.
+
+- Add project name & Changed Region to relevant country.
+
+- Select "New" and "Create new app".
+
+- In "Settings" select "BuildPack" and select Python and Node.js. (Python must be at the top of the list).
+
+- Within "Settings", click "Reveal Config Vars" and input Check config var add PORT & 8000 as I did not have any confidential files this was all that was needed.
+
+- Click on "Deploy" and select your deploy method and repository.
+
+- Click "Connect" on selected repository.
+
+- Either choose "Enable Automatic Deploys" or "Deploy Branch" in the manual deploy section.
+
+- Heroku will now deploy the site.
+
+ **How to clone**
+If you would like to download this repository and store it locally you can do so by cloning it
+
+1.Click the GitHub repository.
+
+2.Click on the drop down arrow on the Code button located on the top right.
+
+3.Select and copy the link that appears.
+
+4.Open Gitpod & select the location where you would like the clone to be saved.
+
+5.In the terminal type 'git clone' and paste the link.
+
+6.Press enter to create your local clone.
+
