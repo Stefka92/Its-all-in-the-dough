@@ -93,11 +93,16 @@ I created the following flowchart during the planning process as a basic guideli
 __________________________________________________________________________________________________________________________________________________________________
 
 **Color Scheme**
+The website uses a variety of colours that are associated with pizzas. 
+I went with green red and cream for the main colours throughout the website.
+- Green to represent the basil in the pizza recipes.
+- Red to represent the tomato sauce in the pizza recipes.
+- Cream to represent the pizza dough.
+ The colour palette was created using the https://coolors.co/ website.
 
- I went with green red and cream for the main colours throughout the website.
- Green to represent the basil in the pizza recipes.
- Red to represent the tomato sauce in the pizza recipes.
- Cream to represent the pizza dough.
+![color](https://github.com/Stefka92/Its-all-in-the-dough/assets/114660741/f3d47e12-e6e9-4200-bae0-6e4d9d3b922d)
+
+
 
 
 **Libraries**
