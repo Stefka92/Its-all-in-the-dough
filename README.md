@@ -83,6 +83,8 @@ I also decided to change my about page slightly and added my image opposite the 
 
 I created the following flowchart during the planning process as a basic guideline to follow when coding my project.
 
+![flowchart](https://github.com/Stefka92/Its-all-in-the-dough/assets/114660741/49e93193-3878-4b67-814c-14de8db5bb76)
+
 
 
 
@@ -94,6 +96,18 @@ ________________________________________________________________________________
 
 
 **Font**
+
+**Libraries**
+
+
+
+[colorama](https://pypi.org/project/colorama/) - to change the output font colour.
+
+[Github](https://github.com/) - To save and store the project files for the project.
+
+[Git](https://git-scm.com/) - Used to code and backup all of my code.
+
+[Heroku](https://gitpod.io/workspaces) - Used to deploy the website.
 
 
 ## Agile Methodology
