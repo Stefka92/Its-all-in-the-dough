@@ -8,7 +8,7 @@ body, ul {
   
   /* Style the navigation bar */
   nav {
-    background-color: #333;
+    background-color: #f11a1a;
   }
   
   nav ul {
@@ -29,7 +29,7 @@ body, ul {
   }
   
   nav a:hover {
-    background-color: #555;
+    background-color: #0aec7f;
   }
   
   /* Style the main content */

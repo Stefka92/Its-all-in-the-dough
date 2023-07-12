@@ -2,6 +2,8 @@ from django.urls import path
 from .views import TableListView, BookingListView, BookingCreateView, BookingQueryView
 from .views import TableListView
 
+
+
 app_name = 'restaurantbookingsystem'
 
 urlpatterns = [
