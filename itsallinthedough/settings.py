@@ -50,6 +50,7 @@ ALLOWED_HOSTS = [
     '8000-stefka92-itsallinthedou-gl1zpncwgia.ws-eu101.gitpod.io',
     'itsallinthedough-715c6b7f0f5c.herokuapp.com',
     '8000-stefka92-itsallinthedou-b9k5er55bgw.ws-eu101.gitpod.io',
+    '8000-stefka92-itsallinthedou-tdwq8aep9sa.ws-eu101.gitpod.io',
 ]
 
 
@@ -68,7 +69,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'django_summernote'
+    'django_summernote',
     'restaurantbookingsystem',
 ]
 
@@ -88,7 +89,7 @@ ROOT_URLCONF = 'itsallinthedough.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,8 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'itsallinthedough.wsgi.application'
 
-import os
-import dj_database_url
 
 # ...
 
@@ -188,3 +187,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
